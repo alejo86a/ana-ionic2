@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { WelcomePage } from "../pages/welcome/welcome";
+import { User } from "../providers/user";
 
 @Component({
   templateUrl: 'app.html'
@@ -16,15 +18,18 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    // public navCtrl: NavController,
+    public user: User) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Welcome', component: WelcomePage }
     ];
-
   }
 
   initializeApp() {
@@ -33,6 +38,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      if(!this.user.getUser()){
+        console.log(this.user.getUser())
+        this.nav.setRoot(WelcomePage);
+      }
     });
   }
 
