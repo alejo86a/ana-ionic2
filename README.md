@@ -1,26 +1,39 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# ana-ionic2
 
-## How to use this template
+A mobile app ("**ana**") built with **Ionic 3 / Angular 4**, generated from the Ionic "sidemenu" starter template.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+## What this is
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+This is a learning/practice mobile app scaffolded from Ionic's default sidemenu starter, with a few custom pages added on top (welcome, login, signup, home, list) and a simple `User` provider. It looks like a personal exercise to learn hybrid mobile app development with Ionic/Angular/Cordova rather than a finished product — most of the business logic is still example/placeholder code (e.g. hardcoded test credentials in the login page).
 
-### With the Ionic CLI:
+## Tech stack
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+- Ionic 3, Angular 4, TypeScript
+- `@ionic-native` plugins (status bar, splash screen)
+- `@ionic/storage`
+- Cordova (for building to iOS/Android)
+
+## App structure
+
+- `src/pages/welcome` — welcome/intro page
+- `src/pages/login` — login page (demo credentials wired in)
+- `src/pages/signup` — sign-up page
+- `src/pages/home` — home page (default root page)
+- `src/pages/list` — list page
+- `src/providers/user` — simple user service/provider
+
+## How to run
 
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
+npm install -g ionic cordova
+npm install
+ionic serve          # run in the browser
+# or, for a device/emulator:
+ionic cordova platform add android   # or ios
+ionic cordova run android            # or ios
 ```
 
-Then, to run it, cd into `mySideMenu` and run:
+## Context
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
+Personal practice project exploring Ionic 3 / Angular mobile app development, built from the official Ionic starter template.
 
